@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class User {
@@ -15,6 +19,10 @@ public class User {
 	private String address;
 	private String contact;
 	private String status;
+	
+	@ManyToOne
+	@JoinColumn(name="dept_id")
+	private Department department;
 	
 	public User(String name, String address, String contact, String status) {
 		this.name = name;
@@ -48,15 +56,22 @@ public class User {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", address=" + address + ", contact=" + contact + "]";
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", address=" + address + ", contact=" + contact + ", status="
+				+ status + "]";
 	}
 	
 }
