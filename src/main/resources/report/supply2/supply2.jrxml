@@ -6,7 +6,6 @@
 		<![CDATA[]]>
 	</queryString>
 	<field name="name" class="java.lang.String"/>
-	<field name="Field_1" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

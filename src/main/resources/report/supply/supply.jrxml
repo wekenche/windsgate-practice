@@ -135,21 +135,21 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="465" splitType="Stretch">
+		<band height="70" splitType="Stretch">
 			<line>
-				<reportElement x="71" y="0" width="1" height="378" uuid="7228992a-ea2d-4ac7-94ef-0888bd25dc36"/>
+				<reportElement x="70" y="0" width="2" height="70" uuid="7228992a-ea2d-4ac7-94ef-0888bd25dc36"/>
 			</line>
 			<line>
-				<reportElement x="141" y="0" width="1" height="378" uuid="e626b547-286d-4a54-b360-522bdebf140b"/>
+				<reportElement x="140" y="0" width="2" height="70" uuid="e626b547-286d-4a54-b360-522bdebf140b"/>
 			</line>
 			<line>
-				<reportElement x="330" y="0" width="1" height="378" uuid="42b3f417-93a7-4f05-b850-9facc8dce260"/>
+				<reportElement x="329" y="0" width="2" height="70" uuid="42b3f417-93a7-4f05-b850-9facc8dce260"/>
 			</line>
 			<line>
-				<reportElement x="480" y="0" width="1" height="378" uuid="34efb655-a2b6-4ec1-a7f4-5ca338191a4f"/>
+				<reportElement x="479" y="0" width="2" height="70" uuid="34efb655-a2b6-4ec1-a7f4-5ca338191a4f"/>
 			</line>
 			<line>
-				<reportElement x="405" y="0" width="1" height="378" uuid="3950dbb2-56d9-47d9-8ed0-da8052d65581"/>
+				<reportElement x="404" y="0" width="2" height="70" uuid="3950dbb2-56d9-47d9-8ed0-da8052d65581"/>
 			</line>
 			<frame>
 				<reportElement x="-1" y="0" width="330" height="28" uuid="c6f20495-b3ee-4a4c-a1c8-553d29bfeba8"/>

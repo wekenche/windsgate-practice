@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,13 +25,13 @@ public class Category {
 	private Long id;
 	private String stage;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="sup_id")
-	@JsonIgnoreProperties("category")
+	//@JsonIgnoreProperties("category")
 	private Supply supply;
 	
-	@OneToMany(mappedBy="category")
-	@JsonIgnoreProperties("category")
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="category")
+	//@JsonIgnoreProperties("category")
 	private List<Item> item;
 
 	public Long getId() {

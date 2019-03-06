@@ -18,4 +18,9 @@ public class SupplyService {
 	public List<Supply> findAll(){
 		return genRepo.findAll();
 	}
+
+
+	public Supply save(Supply supply) {
+		return genRepo.save(supply);
+	}
 }

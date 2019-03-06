@@ -10,18 +10,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.example.demo.util.View;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Department {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonView(View.Public.class)
 	private Long id;
-	
+	@JsonView(View.Public.class)
 	private String name;
 	
-	@OneToMany(mappedBy="department",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="department",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	//@JsonBackReference
+	//@JsonManagedReference
+	//@JsonIgnoreProperties("department")
+	//@JsonIdentityReference(alwaysAsId=true)
+	@JsonView(View.Internal.class)
 	private List<User> user; 
 	
 	public Long getId() {

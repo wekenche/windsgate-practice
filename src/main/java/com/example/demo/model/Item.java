@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,9 +23,9 @@ public class Item {
 	private double amount;
 
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JoinColumn(name="cat_id")
-	@JsonIgnoreProperties("item")
+	//@JsonIgnoreProperties("item")
 	private Category category;
 	
 	public Long getId() {

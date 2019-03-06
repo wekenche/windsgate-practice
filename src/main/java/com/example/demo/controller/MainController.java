@@ -11,21 +11,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView;
 
-import com.example.demo.model.Item;
+import com.example.demo.model.Department;
 import com.example.demo.model.Supply;
 import com.example.demo.model.User;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.ItemService;
 import com.example.demo.service.SupplyService;
 import com.example.demo.service.UserService;
+import com.example.demo.util.View;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -55,7 +63,7 @@ public class MainController {
 	@GetMapping("/sample")
 	public String sample() {
 		
-		
+		System.out.println("sample");
 		return "sample";
 	}
 	@GetMapping("/report/user")
@@ -81,18 +89,18 @@ public class MainController {
 	@GetMapping("/report/department")
 	public void reportDepartment(HttpServletResponse  response)throws Exception{
 		
-		response.setContentType("text/html");
-		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(userService.getAllDepartment());
-		InputStream inputStream = this.getClass().getResourceAsStream("/report/department.jrxml");
-		JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
-		Map<String, Object> param = new HashMap<>();
-		param.put("title","department List");
-		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param, dataSource);
-		
-		response.setHeader("Content-Disposition", "inline; filename=department"+new Date()+".pdf; charset=UTF-16LE");
-		response.setContentType(MediaType.APPLICATION_PDF_VALUE);
-		JasperExportManager.exportReportToPdfStream(jasperPrint,
-		response.getOutputStream());
+//		response.setContentType("text/html");
+//		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(userService.getAllDepartment());
+//		InputStream inputStream = this.getClass().getResourceAsStream("/report/department.jrxml");
+//		JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
+//		Map<String, Object> param = new HashMap<>();
+//		param.put("title","department List");
+//		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param, dataSource);
+//		
+//		response.setHeader("Content-Disposition", "inline; filename=department"+new Date()+".pdf; charset=UTF-16LE");
+//		response.setContentType(MediaType.APPLICATION_PDF_VALUE);
+//		JasperExportManager.exportReportToPdfStream(jasperPrint,
+//		response.getOutputStream());
 	}
 	
 	@GetMapping("/report/supply")
@@ -136,6 +144,33 @@ public class MainController {
 	@GetMapping("/supply/list")
 	public @ResponseBody List<?> getsupply(HttpServletResponse  response)throws Exception{
 		return supplyService.findAll();
+	}
+	
+	@PutMapping("/supply/save")
+	public @ResponseBody Supply saveSupply(@RequestBody Supply supply) {
+		return supplyService.save(supply);
+	}
+	
+	@PostMapping("/department/save")
+	public @ResponseBody Department saveDepartment(@RequestBody Department department) {
+		return userService.saveDepartment(department);
+	}
+	@JsonView(View.Public.class)
+	@GetMapping("/department/list")
+	public @ResponseBody Page<?> getDepartment(Pageable pageable){
+		
+		return userService.getAllDepartment(pageable);
+	}
+	
+	@JsonView(View.Public.class)
+	@GetMapping("/user/list")
+	public @ResponseBody List<?> getUser(){
+		/*SimpleFilterProvider filterProvider = new SimpleFilterProvider();
+		 filterProvider.addFilter("userFilter",
+	             SimpleBeanPropertyFilter.filterOutAllExcept("department", "name"));*/
+		List<User> department = userService.findAll();
+		System.out.println(department.toString());
+		return department;
 	}
 
 	@GetMapping("/save")

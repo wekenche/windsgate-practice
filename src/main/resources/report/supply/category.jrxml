@@ -65,100 +65,11 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="160" splitType="Stretch">
+		<band height="57" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
-			<textField>
-				<reportElement x="156" y="14" width="100" height="23" uuid="4c130bd4-5c66-4bd0-94ed-85ff60e2ee50"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Microsoft YaHei" size="9" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{stage}]]></textFieldExpression>
-			</textField>
 			<componentElement>
-				<reportElement mode="Transparent" x="142" y="37" width="399" height="15" uuid="3e5941ad-8338-49d7-a5f3-bd90b166206f">
-					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
-					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
-					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
-					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
-				</reportElement>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Dataset1" uuid="0cfc9e7c-f00a-4bfb-b1a5-d65351224c9b">
-						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{item})]]></dataSourceExpression>
-					</datasetRun>
-					<jr:column width="190" uuid="a6691b92-183a-4bc8-b5be-414d73433422">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
-						<jr:detailCell style="Table 1_CH" height="15">
-							<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
-							<box>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<textField>
-								<reportElement x="0" y="0" width="190" height="15" uuid="53fae179-bc69-489a-91bd-815edbdad4a3"/>
-								<box>
-									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-									<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-									<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-								</box>
-								<textElement verticalAlignment="Top">
-									<font fontName="Microsoft YaHei" size="9"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{name}+" - "+$F{model}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="70" uuid="f40e889b-25fa-40be-bd02-58b7b3a5f104">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
-						<jr:detailCell style="Table 1_CH" height="15">
-							<box>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<textField>
-								<reportElement x="0" y="0" width="70" height="15" uuid="56cde81a-07cd-435c-a817-9cb44b0a2d38"/>
-								<textElement textAlignment="Right" verticalAlignment="Top"/>
-								<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="80" uuid="378a7c6a-7ffe-4295-aa83-3ffb620c3998">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-						<jr:detailCell style="Table 1_CH" height="15">
-							<box>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<textField>
-								<reportElement x="0" y="0" width="80" height="15" uuid="8c518714-f853-486c-84fb-c27f6fa2a6fc"/>
-								<textElement textAlignment="Right" verticalAlignment="Top"/>
-								<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="59" uuid="cd07370c-8de2-4c1b-813f-7c77924ee156">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
-						<jr:detailCell style="Table 1_CH" height="15">
-							<textField>
-								<reportElement x="0" y="0" width="59" height="15" uuid="6b6ff8fb-8c6d-447f-83e0-411b573a66a2"/>
-								<textElement textAlignment="Center" verticalAlignment="Top">
-									<font fontName="Microsoft YaHei" size="9" isBold="false"/>
-								</textElement>
-								<textFieldExpression><![CDATA["Total"]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
-			<componentElement>
-				<reportElement x="186" y="111" width="350" height="30" uuid="754187aa-fbc2-4224-a5f2-4754a73f95f0"/>
-				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+				<reportElement x="156" y="25" width="350" height="30" uuid="754187aa-fbc2-4224-a5f2-4754a73f95f0"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="Dataset2" uuid="1e7dbbba-0782-4c5a-b863-54b22196f378">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{item})]]></dataSourceExpression>
 					</datasetRun>
@@ -174,6 +85,13 @@
 					</jr:listContents>
 				</jr:list>
 			</componentElement>
+			<textField>
+				<reportElement x="156" y="2" width="100" height="23" uuid="4c130bd4-5c66-4bd0-94ed-85ff60e2ee50"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Microsoft YaHei" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stage}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>

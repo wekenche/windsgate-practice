@@ -3,12 +3,14 @@ package com.example.demo.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,8 +26,8 @@ public class Supply {
 	private String code;
 	private Date supplyDate;
 	
-	@OneToMany(mappedBy="supply")
-	@JsonIgnoreProperties("supply")
+	@OneToMany(mappedBy="supply",cascade=CascadeType.ALL)
+	//@JsonIgnoreProperties("supply")
 	private List<Category> category;
 
 	public Long getId() {

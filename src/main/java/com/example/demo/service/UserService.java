@@ -3,6 +3,8 @@ package com.example.demo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Department;
@@ -28,7 +30,12 @@ public class UserService {
 	}
 	
 	//for department
-	public List<Department> getAllDepartment() {
-		return deptRepo.findAll();
+	public Page<Department> getAllDepartment(Pageable pageable) {
+		return deptRepo.findAll(pageable);
+	}
+
+	public Department saveDepartment(Department department) {
+		
+		return deptRepo.save(department);
 	}
 }
